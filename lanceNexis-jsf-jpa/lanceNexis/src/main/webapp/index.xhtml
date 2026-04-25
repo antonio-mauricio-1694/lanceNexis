@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>lanceNexis</title>
+</h:head>
+
+
+<h:body>
+		<h1>Bem Vindo ao LanceNexies</h1>
+		
+		<h:form>
+		
+	<h:panelGrid columns="1">
+    <h:outputLabel value="Nome:" for="campoNome" />
+    <h:inputText id="campoNome" value="#{pessoaBean.nome}" />
+  
+  <h:commandButton value="Mostrar Nome" action="#{pessoaBean.addNome}" />
+</h:panelGrid>
+		
+		<h:dataTable value="#{pessoaBean.nomes}" var="nome">
+		
+		<h:column>
+		
+		<h:outputText value="#{nome}" />
+		
+		</h:column>
+		
+		</h:dataTable>
+		</h:form>
+</h:body>
+
+
+</html>
