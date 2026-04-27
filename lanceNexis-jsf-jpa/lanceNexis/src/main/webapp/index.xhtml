@@ -1,35 +1,141 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<!-- WebContent/index.xhtml -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-	<title>lanceNexis</title>
+    <title>LanceNexis</title>
+
+    <style>
+        /* SEU CSS ORIGINAL (mantido 100%) */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+
+        body {
+            height: 100vh;
+            background: #0d0f14;
+            background-image:
+                radial-gradient(ellipse 60% 50% at 70% 0%, rgba(201,168,76,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 10% 100%, rgba(83,74,183,0.10) 0%, transparent 60%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #eef0f6;
+        }
+
+        .container {
+            background: #1a1e2a;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+        }
+
+        h1 { text-align: center; margin-bottom: 0.3rem; }
+        h1 span { color: #c9a84c; }
+
+        .subtitle {
+            text-align: center;
+            font-size: 0.72rem;
+            color: #7e8598;
+            margin-bottom: 2rem;
+        }
+
+        .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+
+        label {
+            font-size: 0.72rem;
+            color: #7e8598;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 0.65rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.07);
+            background: #1f2435;
+            color: #eef0f6;
+        }
+
+        .btn {
+            margin-top: 1.5rem;
+            padding: 0.8rem;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            background: #c9a84c;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+    background: #D4AF37;
+    transform: translateY(-2px);
+}
+
+ .btn:hover {
+    background: #D4AF37;
+    transform: translateY(-2px);
+}
+        .footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.72rem;
+            color: #4a5068;
+        }
+
+        .footer span { color: #c9a84c; }
+    </style>
+
 </h:head>
 
-
 <h:body>
-		<h1>Bem Vindo ao LanceNexis</h1>
-		
-		<h:form>
-		
-	<h:panelGrid columns="1">
-    <h:outputLabel value="Nome:" for="campoNome" />
-    <h:inputText id="campoNome" value="#{pessoaBean.nome}" />
-  
-  <h:commandButton value="Mostrar Nome" action="#{pessoaBean.addNome}" />
-</h:panelGrid>
-		
-		<h:dataTable value="#{pessoaBean.nomes}" var="nome">
-		
-		<h:column>
-		
-		<h:outputText value="#{nome}" />
-		
-		</h:column>
-		
-		</h:dataTable>
-		</h:form>
+
+<div class="container">
+
+    <h1>Lance<span>Nexis</span></h1>
+    <p class="subtitle">Cadastro de Participante</p>
+
+    <h:form>
+
+    <div class="form-group">
+                <h:outputLabel value="ID:" for="campoId" />
+                <h:inputText id="campoId"
+                             value="#{pessoaBean.pessoa.id}"
+                             readonly="true" />
+            </div>
+
+        <div class="form-group">
+            <h:outputLabel value="Nome:" />
+            <h:inputText value="#{pessoaBean.pessoa.nome}" />
+        </div>
+
+        <div class="form-group">
+            <h:outputLabel value="Sobrenome:" />
+            <h:inputText value="#{pessoaBean.pessoa.sobrenome}" />
+        </div>
+
+        <div class="form-group">
+            <h:outputLabel value="Idade:" />
+            <h:inputText value="#{pessoaBean.pessoa.idade}" />
+        </div>
+        
+         <h:commandButton value="Novo"
+                         action="#{pessoaBean.novo}"
+                         styleClass="btn" />
+
+        <h:commandButton value="Salvar"
+                         action="#{pessoaBean.salvar}"
+                         styleClass="btn" />
+
+    </h:form>
+
+    <p class="footer"><span>LanceNexis</span> — Plataforma</p>
+
+</div>
+
 </h:body>
-
-
 </html>

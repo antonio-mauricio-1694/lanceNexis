@@ -1,43 +1,47 @@
+// src/main/java/br/com/nexeis/PessoaBean.java
 package br.com.nexeis;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.faces.view.ViewScoped;
+import br.com.entitys.Pessoa;
+import dao.DaoGeneric;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
 @Named("pessoaBean")
-@ApplicationScoped
+@SessionScoped
 public class PessoaBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String nome;
-    private List<String> nomes = new ArrayList<>();
+    private Pessoa pessoa = new Pessoa();
+    private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
 
-    public String addNome() {
-        if (nome != null && !nome.trim().isEmpty()) {
-            nomes.add(nome);
-            nome = ""; // limpa input (UX melhor)
-        }
-        return null; // JSF moderno usa null, não ""
+    public String salvar() {
+    	 pessoa =  daoGeneric.merge(pessoa);
+        // limpa o form após salvar
+        return null;
+    }
+    
+    public String novo() {
+    	
+    	pessoa = new Pessoa();
+    	
+    	return null;
     }
 
-    public String getNome() {
-        return nome;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
-    public List<String> getNomes() {
-        return nomes;
+    public DaoGeneric<Pessoa> getDaoGeneric() {
+        return daoGeneric;
     }
 
-    public void setNomes(List<String> nomes) {
-        this.nomes = nomes;
+    public void setDaoGeneric(DaoGeneric<Pessoa> daoGeneric) {
+        this.daoGeneric = daoGeneric;
     }
 }
