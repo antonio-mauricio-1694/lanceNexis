@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import br.com.jpaUtil.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -30,5 +32,42 @@ public class DaoGeneric <E> {
 		
 		return retorno;
 	}
+	public void deletePorId(E entidade, Object id) {
+	    EntityManager entityManager = JpaUtil.getEntityManager();
+	    EntityTransaction entityTransaction = entityManager.getTransaction();
+	    try {
+	        entityTransaction.begin();
+	        entityManager.createQuery(
+	            "DELETE FROM " + entidade.getClass().getSimpleName() + " e WHERE e.id = :id"
+	        )
+	        .setParameter("id", id)
+	        .executeUpdate();
+	        entityTransaction.commit();
+	    } catch (Exception e) {
+	        if (entityTransaction.isActive()) {
+	            entityTransaction.rollback();
+	        }
+	        throw e;
+	    } finally {
+	        entityManager.close();
+	    }
+	}
+	
+	public List<E> getListEntity(Class<E> entidade) {
+
+	    EntityManager entityManager = JpaUtil.getEntityManager();
+	    List<E> retorno;
+
+	    try {
+	        retorno = entityManager
+	                .createQuery("FROM " + entidade.getSimpleName(), entidade)
+	                .getResultList();
+	    } finally {
+	        entityManager.close(); // fecha DEPOIS
+	    }
+
+	    return retorno;
+	}
+	
 
 }
