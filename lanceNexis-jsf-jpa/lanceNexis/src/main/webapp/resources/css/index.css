@@ -668,3 +668,170 @@ input:focus-visible,
     outline: 2px solid var(--primary-light);
     outline-offset: 2px;
 }
+
+
+/* Container da coluna de ações */
+.table td .btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 4px 8px;              /* menor */
+    border-radius: 6px;
+
+    font-size: 11px;               /* menor */
+    font-weight: 600;
+
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    border: none;
+    outline: none;
+    
+    
+}
+
+.table td a + a {
+    margin-left: 6px;
+}
+
+/* Ícone dentro do botão */
+.btn-action svg {
+    width: 12px;   /* tava 5px (bugado) */
+    height: 12px;
+}
+
+/* Texto */
+.btn-action span {
+    display: inline-block;
+}
+
+/* BOTÃO EDITAR */
+.btn-edit {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+.btn-edit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+}
+
+.btn-edit:active {
+    transform: scale(0.95);
+}
+
+/* animação leve */
+.table td .btn-action {
+    animation: popIn 0.2s ease-out;
+}
+
+/* responsivo */
+@media (max-width: 768px) {
+    .btn-action {
+        padding: 4px 6px;
+        font-size: 10px;
+    }
+
+    .btn-action span {
+        display: none;
+    }
+
+    .btn-action svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+
+
+
+/* BASE */
+.btn-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 4px 8px;              /* menor */
+    border-radius: 6px;
+
+    font-size: 11px;               /* menor */
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+
+    box-shadow: 0 2px 6px rgba(220, 38, 38, 0.25);
+    transition: all 0.2s ease;
+    
+    
+}
+
+/* Ícone */
+.btn-delete svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* HOVER */
+.btn-delete:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.35);
+}
+
+/* CLICK */
+.btn-delete:active {
+    transform: scale(0.95);
+}
+
+/* ============================================
+   TABLET
+   ============================================ */
+@media (max-width: 768px) {
+    .btn-delete {
+        padding: 4px 6px;
+        font-size: 10px;
+        gap: 2px;
+    }
+
+    .btn-delete svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* ============================================
+   MOBILE (botão vira só ícone)
+   ============================================ */
+@media (max-width: 480px) {
+    .btn-delete {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border-radius: 50%;
+    }
+
+    .btn-delete span {
+        display: none; /* some texto */
+    }
+
+    .btn-delete svg {
+        width: 14px;
+        height: 14px;
+    }
+}
