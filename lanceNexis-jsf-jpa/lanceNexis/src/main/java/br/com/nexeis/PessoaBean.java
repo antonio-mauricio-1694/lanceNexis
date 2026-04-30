@@ -1,74 +1,109 @@
-// src/main/java/br/com/nexeis/PessoaBean.java
 package br.com.nexeis;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import br.com.entitys.Pessoa;
 import dao.DaoGeneric;
-import jakarta.enterprise.context.SessionScoped;
-
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 
 @Named("pessoaBean")
-@SessionScoped
+@ViewScoped
 public class PessoaBean implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private Pessoa pessoa = new Pessoa();
-	private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
-	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
+    private Pessoa pessoa = new Pessoa();
+    private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<>();
+    private List<Pessoa> pessoas = new ArrayList<>();
 
-	public String salvar() {
-		pessoa = daoGeneric.merge(pessoa);
-		// limpa o form após salvar
-		caregarPessoas();
-		return null;
-	}
+    public PessoaBean() {
+        caregarPessoas();
+    }
 
-	public String novo() {
+    // 🔥 SALVAR CORRIGIDO
+    public String salvar() {
 
-		pessoa = new Pessoa();
+        // REGRA: só um pode ser true
+        if (pessoa.getInativo()) {
+            pessoa.setAtivo(false);
+        } else if (pessoa.getAtivo()) {
+            pessoa.setInativo(false);
+        }
 
-		return null;
-	}
+        // fallback (nenhum marcado)
+        if (!pessoa.getAtivo() && !pessoa.getInativo()) {
+            pessoa.setInativo(true);
+        }
 
-	public String remove() {
-	    daoGeneric.deletePorId(pessoa, pessoa.getId());
-	    caregarPessoas();
-	    return null;
-	}
-	
-	public void caregarPessoas() {
-		pessoas = daoGeneric.getListEntity(Pessoa.class);
-		
-	}
-	
-	
-	
-	public List<Pessoa> getPessoas() {
-		return pessoas;
-	}
+        pessoa = daoGeneric.merge(pessoa);
 
-	public void setPessoas(List<Pessoa> pessoas) {
-		this.pessoas = pessoas;
-	}
+        // limpa form
+        pessoa = new Pessoa();
 
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
+        caregarPessoas();
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
+        return null;
+    }
 
-	public DaoGeneric<Pessoa> getDaoGeneric() {
-		return daoGeneric;
-	}
+    public String novo() {
+        pessoa = new Pessoa();
+        return null;
+    }
 
-	public void setDaoGeneric(DaoGeneric<Pessoa> daoGeneric) {
-		this.daoGeneric = daoGeneric;
-	}
+    public String remove() {
+        daoGeneric.deletePorId(pessoa, pessoa.getId());
+        pessoa = new Pessoa();
+        caregarPessoas();
+        return null;
+    }
+
+    public void caregarPessoas() {
+        pessoas = daoGeneric.getListEntity(Pessoa.class);
+    }
+
+    // ================= GETTERS =================
+
+    public List<Pessoa> getPessoas() {
+        return pessoas;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public DaoGeneric<Pessoa> getDaoGeneric() {
+        return daoGeneric;
+    }
+
+    public void setDaoGeneric(DaoGeneric<Pessoa> daoGeneric) {
+        this.daoGeneric = daoGeneric;
+    }
+
+    // ================= SETOR =================
+
+    public List<String> getOpcoesSetor() {
+        return Arrays.asList("Gerente", "Diretor", "Administrativo", "RH");
+    }
+
+    // ================= STATUS (CHECKBOX CONTROLADO) =================
+
+    public void onAtivoChange() {
+        if (pessoa.getAtivo()) {
+            pessoa.setInativo(false);
+        }
+    }
+
+    public void onInativoChange() {
+        if (pessoa.getInativo()) {
+            pessoa.setAtivo(false);
+        }
+    }
 }

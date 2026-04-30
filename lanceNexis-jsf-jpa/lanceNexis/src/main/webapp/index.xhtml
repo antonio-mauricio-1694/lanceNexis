@@ -42,7 +42,7 @@
 			<h1>
 				Lance<span>Nexis</span>
 			</h1>
-			<p>Sistema de Cadastro de Participantes</p>
+			<p>Sistema de Cadastro</p>
 		</div>
 
 		<!-- FORM -->
@@ -112,6 +112,59 @@
 						</h:selectOneMenu>
 					</div>
 
+					<div class="field">
+						<label> <svg viewBox="0 0 24 24" fill="none"
+								stroke="currentColor" stroke-width="2"> <circle cx="12"
+								cy="12" r="10" /> <polyline points="12 6 12 12 16 14" /> </svg>
+							Setor
+						</label>
+
+						<h:selectManyMenu id="campoSetor" styleClass="select-setor"
+							size="4" value="#{pessoaBean.pessoa.setor}">
+
+							<f:selectItem itemLabel="Gerente" itemValue="GERENTE" />
+							<f:selectItem itemLabel="Diretor" itemValue="DIRETOR" />
+							<f:selectItem itemLabel="Administrativo"
+								itemValue="ADMINISTRATIVO" />
+							<f:selectItem itemLabel="RH" itemValue="RH" />
+
+						</h:selectManyMenu>
+					</div>
+
+<div class="status-group">
+
+    <label class="status-option ativo">
+        <h:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}">
+            <f:ajax listener="#{pessoaBean.onAtivoChange}" render="@form"/>
+        </h:selectBooleanCheckbox>
+
+        <span>
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="9 12 12 15 16 10"/>
+            </svg>
+            Ativo
+        </span>
+    </label>
+
+    <label class="status-option inativo">
+        <h:selectBooleanCheckbox value="#{pessoaBean.pessoa.inativo}">
+            <f:ajax listener="#{pessoaBean.onInativoChange}" render="@form"/>
+        </h:selectBooleanCheckbox>
+
+        <span>
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="8" y1="8" x2="16" y2="16"/>
+                <line x1="16" y1="8" x2="8" y2="16"/>
+            </svg>
+            Inativo
+        </span>
+    </label>
+
+</div>
+
+
 
 				</div>
 
@@ -129,7 +182,6 @@
 
 
 				</div>
-
 			</h:form>
 		</div>
 
@@ -209,14 +261,40 @@
 
 						<h:column>
 							<f:facet name="header">
-								<span class="th-content"> <!-- Ícone Sexo --> <svg
+								<span class="th-setor"> <!-- Ícone Setor --> <svg
 										viewBox="0 0 24 24" fill="none" stroke="currentColor"
-										stroke-width="2"> <circle cx="12" cy="12" r="10" /> <path
-										d="M12 8v8" /> <path d="M8 12h8" /> </svg> Sexo
+										stroke-width="2"> <rect x="3" y="3" width="7" height="7" />
+									<rect x="14" y="3" width="7" height="7" /> <rect x="14" y="14"
+										width="7" height="7" /> <rect x="3" y="14" width="7"
+										height="7" /> </svg> Setor
 								</span>
 							</f:facet>
 
-							<span class="td-sexo"> #{pessoa.sexo} </span>
+							<span class="td-setor"> #{pessoa.setorFormatado} </span>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<span class="th-status"> <svg viewBox="0 0 24 24"
+										fill="none" stroke="currentColor" stroke-width="2"> <circle
+										cx="12" cy="12" r="10" /> <path d="M9 12l2 2 4-4" /> </svg> Status
+								</span>
+							</f:facet>
+
+							<span class="td-status"> <h:panelGroup
+									rendered="#{pessoa.ativo}">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+										stroke-width="2"> <circle cx="12" cy="12" r="10" /> <path
+										d="M9 12l2 2 4-4" /> </svg>
+            Ativo
+        </h:panelGroup> <h:panelGroup rendered="#{!pessoa.ativo}">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+										stroke-width="2"> <circle cx="12" cy="12" r="10" /> <line
+										x1="8" y1="8" x2="16" y2="16" /> <line x1="16" y1="8" x2="8"
+										y2="16" /> </svg>
+            Inativo
+        </h:panelGroup>
+							</span>
 						</h:column>
 
 						<h:column>

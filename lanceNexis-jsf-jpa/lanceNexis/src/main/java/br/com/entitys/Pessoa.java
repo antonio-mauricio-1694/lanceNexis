@@ -2,7 +2,9 @@
 package br.com.entitys;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,9 +30,53 @@ public class Pessoa implements Serializable {
     private Date dataNascimento;
     
     private String sexo;
+    private Boolean ativo;
+    private Boolean inativo;
     
+    public Boolean getAtivo() {
+		return ativo;
+	}
 
-    public String getSexo() {
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+	
+	
+
+	public Boolean getInativo() {
+		return inativo;
+	}
+
+	public void setInativo(Boolean inativo) {
+		this.inativo = inativo;
+	}
+
+
+
+	private List<String> setor = new ArrayList<>();	
+
+    public String getSetorFormatado() {
+        if (setor == null || setor.isEmpty()) {
+            return "-";
+        }
+        return String.join(", ", setor);
+    }
+    
+    
+    
+	
+
+
+
+	public List<String> getSetor() {
+		return setor;
+	}
+
+	public void setSetor(List<String> setor) {
+		this.setor = setor;
+	}
+
+	public String getSexo() {
 		return sexo;
 	}
 

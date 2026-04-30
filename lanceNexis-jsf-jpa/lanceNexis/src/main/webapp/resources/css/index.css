@@ -273,50 +273,41 @@ body {
 
 /*compo sexo*/
 
-/* SELECT IGUAL AOS INPUTS */
-.field .select-sexo {
-    width: 100%;
-    height: 48px; /* mesma altura visual */
+/* SELECT FUNCIONAL */
+.select-sexo {
+    width: 220px;
 
-    padding: 0 16px;
-    padding-right: 40px; /* espaço da seta */
+    padding: 8px 10px;
+    font-size: 13px;
 
-    border-radius: var(--radius-md);
-    border: 2px solid var(--border-light);
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
 
-    background: var(--bg-input);
-    color: var(--text-primary);
+    background-color: #fff;
+    color: #111827;
 
-    font-size: 15px;
-    font-weight: 500;
-    font-family: inherit;
-
-    outline: none;
     cursor: pointer;
-    transition: var(--transition);
-
-    /* remove estilo nativo */
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    /* seta custom igual sistema */
-    background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='%236b7280' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 16px;
+    transition: 0.2s ease;
 }
 
-/* FOCUS IGUAL INPUT */
-.field .select-sexo:focus {
-    border-color: var(--primary-light);
-    background: white;
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), var(--shadow-sm);
+/* hover */
+.select-sexo:hover {
+    border-color: #9ca3af;
 }
 
-/* HOVER */
-.field .select-sexo:hover {
-    border-color: var(--border-medium);
+/* focus */
+.select-sexo:focus {
+    border-color: #3b82f6;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .select-sexo {
+        width: 100%;
+        font-size: 12px;
+    }
 }
 
 /* ============================================
@@ -579,17 +570,6 @@ body {
     font-weight: 400;
     font-size: 12px;
 }
-
-.td-sexo {
-    display: inline-block;
-
-    padding: 5px 14px;
-    font-size: 13px;
-    font-weight: 700;
-    color: rgb(0, 0, 0);
-
-   
-}	
 
 /* ============================================
    FOOTER
@@ -893,5 +873,248 @@ input:focus-visible,
     .btn-delete svg {
         width: 14px;
         height: 14px;
+    }
+}
+
+
+
+
+
+/* ============================================
+   FIX CRÍTICO - ÍCONES BUGADOS (TABELA + HEADER)
+   ============================================ */
+
+/* força TODOS os SVG a não estourarem layout */
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* HEADER DA TABELA (ID, NOME, etc) */
+.th-content svg {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px;
+}
+
+/* ICONES GIGANTES DA COLUNA (SETOR BUGADO) */
+.table td svg {
+    width: 16px !important;
+    height: 16px !important;
+    max-width: 16px;
+    max-height: 16px;
+}
+
+/* CASO TENHA GRID DE ICONES (SEU PRINT MOSTRA ISSO) */
+.table td {
+    vertical-align: middle;
+}
+
+.table td svg {
+    display: inline-block;
+}
+
+/* ============================================
+   FIX SELECT (SETOR) — MESMO PADRÃO DOS INPUTS
+   ============================================ */
+
+.field select {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border-light);
+    background: var(--bg-input);
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    transition: var(--transition);
+    outline: none;
+    appearance: none; /* remove estilo feio nativo */
+}
+
+/* foco igual input */
+.field select:focus {
+    border-color: var(--primary-light);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), var(--shadow-sm);
+}
+
+/* seta custom (opcional, leve) */
+.field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%236366f1' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+/* ============================================
+   GARANTIA EXTRA (ANTI CSS GLOBAL BUGADO)
+   ============================================ */
+
+/* evita qualquer regra externa quebrar */
+.table svg,
+.card-title svg,
+.field label svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+
+
+/* container */
+.status-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* label clicável */
+.status-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 16px;
+    border-radius: 10px;
+
+    cursor: pointer;
+    user-select: none;
+
+    font-weight: 600;
+    font-size: 14px;
+
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+/* esconder checkbox padrão */
+.status-option input[type="checkbox"] {
+    display: none;
+}
+
+/* conteúdo */
+.status-option span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ícone */
+.status-option svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================
+   STATUS (ATIVO / INATIVO) - MELHORADO
+   ============================================ */
+
+.status-group {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+/* ESCONDE checkbox padrão */
+.status-option input[type="checkbox"] {
+    display: none;
+}
+
+/* CARD BASE */
+.status-option {
+    flex: 1;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* BASE VISUAL */
+.status-option span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 14px;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+/* ÍCONE */
+.status-option svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5;
+    fill: none;
+}
+
+/* HOVER */
+.status-option:hover span {
+    transform: translateY(-1px);
+}
+
+/* =========================
+   ATIVO (DEFAULT)
+========================= */
+.status-option.ativo span {
+    border: 2px solid #86efac;
+    background: #f0fdf4;
+    color: #166534;
+}
+
+.status-option.ativo svg {
+    stroke: #16a34a;
+}
+
+/* ATIVO SELECIONADO */
+.status-option.ativo input:checked + span {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    border-color: #16a34a;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.status-option.ativo input:checked + span svg {
+    stroke: white;
+}
+
+/* =========================
+   INATIVO (DEFAULT)
+========================= */
+.status-option.inativo span {
+    border: 2px solid #fca5a5;
+    background: #fef2f2;
+    color: #7f1d1d;
+}
+
+.status-option.inativo svg {
+    stroke: #dc2626;
+}
+
+/* INATIVO SELECIONADO */
+.status-option.inativo input:checked + span {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border-color: #dc2626;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.status-option.inativo input:checked + span svg {
+    stroke: white;
+}
+
+/* CLICK FEEDBACK */
+.status-option:active span {
+    transform: scale(0.96);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .status-group {
+        flex-direction: column;
     }
 }
