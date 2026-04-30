@@ -100,6 +100,19 @@
 							placeholder="Ex: 25" />
 					</div>
 
+					<div class="field">
+						<label> <svg viewBox="0 0 24 24" fill="none"
+								stroke="currentColor" stroke-width="2"> <circle cx="12"
+								cy="12" r="10" /> <polyline points="12 6 12 12 16 14" /> </svg> Sexo
+						</label>
+						<h:selectOneMenu id="campoSexo" styleClass="select-sexo"
+							value="#{pessoaBean.pessoa.sexo}">
+							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+						</h:selectOneMenu>
+					</div>
+
+
 				</div>
 
 				<div class="actions">
@@ -112,8 +125,8 @@
 
 					<h:commandButton value="Remover" action="#{pessoaBean.remove}"
 						styleClass="btn btn-danger" />
-						
-					
+
+
 
 				</div>
 
@@ -190,8 +203,20 @@
 								</span>
 							</f:facet>
 							<span class="td-idade">#{pessoa.idade} <small>anos</small></span>
-							
-							
+
+
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<span class="th-content"> <!-- Ícone Sexo --> <svg
+										viewBox="0 0 24 24" fill="none" stroke="currentColor"
+										stroke-width="2"> <circle cx="12" cy="12" r="10" /> <path
+										d="M12 8v8" /> <path d="M8 12h8" /> </svg> Sexo
+								</span>
+							</f:facet>
+
+							<span class="td-sexo"> #{pessoa.sexo} </span>
 						</h:column>
 
 						<h:column>
@@ -207,7 +232,8 @@
 
 							</h:commandLink>
 
-							<h:commandLink styleClass="btn-action btn-delete" value="Excluir" action="#{pessoaBean.remove}">
+							<h:commandLink styleClass="btn-action btn-delete" value="Excluir"
+								action="#{pessoaBean.remove}">
 
 								<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
 									value="#{pessoa}" />

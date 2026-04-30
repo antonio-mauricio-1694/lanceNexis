@@ -26,8 +26,19 @@ public class Pessoa implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
+    
+    private String sexo;
+    
 
-    public Pessoa() {}
+    public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public Pessoa() {}
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
