@@ -42,7 +42,7 @@
 			<h1>
 				Lance<span>Nexis</span>
 			</h1>
-			<p>Sistema de Cadastro</p>
+			<p>Cadastro de Usuario</p>
 		</div>
 
 		<!-- FORM -->
@@ -131,6 +131,37 @@
 						</h:selectManyMenu>
 					</div>
 
+
+
+<div class="field">
+    <label>
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="7" r="4" />
+            <path d="M5 21v-2a4 4 0 014-4h6a4 4 0 014 4v2" />
+        </svg>
+        Login
+    </label>
+
+    <h:inputText value="#{pessoaBean.pessoa.login}"
+                 placeholder="Digite seu login" />
+</div>
+
+<div class="field">
+    <label>
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2">
+            <path d="M12 17v.01" />
+            <rect x="5" y="11" width="14" height="10" rx="2" />
+            <path d="M8 11V7a4 4 0 118 0v4" />
+        </svg>
+        Senha
+    </label>
+
+    <h:inputSecret value="#{pessoaBean.pessoa.senha}"
+                   placeholder="Digite sua senha" />
+</div>
+
 <div class="status-group">
 
     <label class="status-option ativo">
@@ -195,7 +226,7 @@
 					y2="18" /> <line x1="3" y1="6" x2="3.01" y2="6" /> <line x1="3"
 					y1="12" x2="3.01" y2="12" /> <line x1="3" y1="18" x2="3.01"
 					y2="18" /> </svg>
-				<span>Lista de Participantes</span>
+				<span>Lista de Usuarios</span>
 				<div class="badge-count">
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
 						stroke-width="2"> <path
