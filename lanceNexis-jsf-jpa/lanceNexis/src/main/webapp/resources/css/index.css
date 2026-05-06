@@ -1140,4 +1140,37 @@ svg {
 
 
 
+#menuForm {
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 4px;
+    padding: 0 8px;
+}
+
+#menuForm a {
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 22px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #7a7f9a;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 8px 8px 0 0;
+    transition: color 0.18s, border-color 0.18s, background 0.18s;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    background: transparent;
+}
+
+#menuForm a:hover {
+    color: #1a1f36;
+    border-bottom-color: #6366f1;
+    background: rgba(99, 102, 241, 0.06);
+}
+
+
 
