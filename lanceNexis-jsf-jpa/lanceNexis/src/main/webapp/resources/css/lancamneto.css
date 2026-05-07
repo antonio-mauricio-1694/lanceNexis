@@ -1,0 +1,179 @@
+body {
+    background: linear-gradient(rgb(246, 245, 244), rgb(26, 95, 180)),
+                url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1920')
+                no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    padding: 40px;
+    color: #0f172a;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* =========================
+   APP WRAPPER
+========================= */
+.app {
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+}
+
+/* =========================
+   HEADER (mantém dark)
+========================= */
+.header {
+    padding: 25px 30px;
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1f2937;
+}
+
+.header p {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* =========================
+   CONTAINER (CADASTRO BRANCO)
+========================= */
+.container {
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    color: #0f172a;
+}
+
+/* títulos */
+.title-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.title-section i {
+    margin-right: 10px;
+    color: #6366f1;
+}
+
+/* =========================
+   FORM
+========================= */
+label {
+    color: #334155;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #0f172a;
+    transition: 0.2s;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+}
+
+/* =========================
+   BOTÕES FORM
+========================= */
+.btn-primary {
+    background: #6366f1;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #4f46e5;
+}
+
+.btn-light {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.btn-light:hover {
+    background: #e2e8f0;
+}
+
+/* =========================
+   TABELA (dark separada do form)
+========================= */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #0f172a;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table th {
+    background: #111827;
+    padding: 14px;
+    text-align: left;
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.table td {
+    padding: 14px;
+    border-bottom: 1px solid #1f2937;
+    font-size: 14px;
+    color: #e5e7eb;
+}
+
+.table tr:hover {
+    background: #1f2937;
+}
+
+/* =========================
+   BOTÕES AÇÃO
+========================= */
+.btn-edit {
+    background: #10b981;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.btn-edit:hover {
+    background: #059669;
+}
+
+.btn-danger {
+    background: #ef4444;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+}
+
+/* mensagens */
+.msg-error {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}

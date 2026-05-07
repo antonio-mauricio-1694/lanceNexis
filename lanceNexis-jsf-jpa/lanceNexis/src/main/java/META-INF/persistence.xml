@@ -4,6 +4,7 @@
 	
 	   <!-- Provider -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+         
 
         <!-- ENTIDADES (adicione suas classes aqui) -->
         <!-- Exemplo -->
